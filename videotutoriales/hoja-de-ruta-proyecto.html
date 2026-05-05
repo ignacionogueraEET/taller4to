@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Ruta: Proyecto Videotutoriales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2E75B6 0%, #1a4d7a 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .info-bar {
+            background: #f0f4f8;
+            padding: 20px;
+            border-bottom: 2px solid #2E75B6;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            color: #666;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            color: #2E75B6;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2E75B6, #4caf50, #ff9800);
+            top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: 52%;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: 52%;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                text-align: left;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #2E75B6;
+            border-radius: 50%;
+            top: 0;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            border-color: #2E75B6;
+            background: #e3f2fd;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .timeline-item:nth-child(3) .timeline-dot {
+            border-color: #ff9800;
+            background: #fff3e0;
+        }
+
+        .timeline-content {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2E75B6;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 4px solid #4caf50;
+        }
+
+        .timeline-item:nth-child(3) .timeline-content {
+            border-left: none;
+            border-right: 4px solid #ff9800;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        .timeline-week {
+            color: #666;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            color: #2E75B6;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-title {
+            color: #4caf50;
+        }
+
+        .timeline-item:nth-child(3) .timeline-title {
+            color: #ff9800;
+        }
+
+        .timeline-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .task-list {
+            list-style: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #ddd;
+        }
+
+        .task-list li {
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .task-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        /* Fases */
+        .phases {
+            margin-top: 50px;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .phase-card:hover {
+            border-color: #2E75B6;
+            box-shadow: 0 4px 12px rgba(46, 117, 182, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .phase-number {
+            display: inline-block;
+            background: #2E75B6;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .phase-card:nth-child(2) .phase-number {
+            background: #4caf50;
+        }
+
+        .phase-card:nth-child(3) .phase-number {
+            background: #ff9800;
+        }
+
+        .phase-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .phase-duration {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .phase-tasks {
+            text-align: left;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        /* Hitos */
+        .milestones {
+            background: #f0f7ff;
+            border-left: 4px solid #2E75B6;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+        }
+
+        .milestones h3 {
+            color: #2E75B6;
+            margin-bottom: 15px;
+        }
+
+        .milestone-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .milestone-item:last-child {
+            border-bottom: none;
+        }
+
+        .milestone-date {
+            font-weight: bold;
+            color: #2E75B6;
+        }
+
+        .milestone-desc {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Tabla de distribución */
+        .distribution {
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        th {
+            background: #2E75B6;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .group-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #2E75B6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+
+        /* Recursos */
+        .resources {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+        }
+
+        .resources h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .resource-item {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .resource-item::before {
+            content: '📄';
+            position: absolute;
+            left: 0;
+        }
+
+        .resource-item a {
+            color: #2E75B6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .resource-item a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 Hoja de Ruta del Proyecto</h1>
+            <p class="subtitle">Realización de Videotutoriales de Software</p>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-item">
+                <div class="info-label">Institución</div>
+                <div class="info-value">EET N.° 1</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Asignatura</div>
+                <div class="info-value">Taller de Computación</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Docente</div>
+                <div class="info-value">Juan I. Noguera</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Duración Total</div>
+                <div class="info-value">2 Semanas</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Timeline -->
+            <h2 style="color: #2E75B6; margin-bottom: 30px; text-align: center;">📅 Cronograma Sprint (2 Semanas)</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-week">SEMANA 1 - Clase A</div>
+                        <div class="timeline-title">Investigación y Descomposición</div>
+                        <div class="timeline-description">
+                            Exploración técnica de la herramienta asignada. Decisión sobre fragmentación (1 video largo o 2 cortos). Creación del borrador inicial del guion.
+                        </div>
+                        <ul class="task-list">
+                            <li>Exploración profunda del software</li>
+                            <li>Planificación de contenido</li>
+                            <li>Borrador inicial de guion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-week">SEMANA 1 - Clase B</div>
+                        <div class="timeline-title">Guion Técnico y Validación ⚠️</div>
+                        <div class="timeline-description">
+                            Redacción final del guion (Diálogos + Acciones en pantalla). Entrega en Campus Virtual para aprobación obligatoria del docente.
+                        </div>
+                        <ul class="task-list">
+                            <li>Redacción final de guion</li>
+                            <li>Indicaciones de zoom</li>
+                            <li>Entrega en Campus Virtual</li>
+                            <li>Esperar aprobación docente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-week">SEMANA 2 - Clase C</div>
+                        <div class="timeline-title">Captura de Pantalla y Ejecución</div>
+                        <div class="timeline-description">
+                            Grabación de video con pantalla limpia y audio claro. Seguimiento estricto del guion aprobado.
+                        </div>
+                        <ul class="task-list">
+                            <li>Preparación del entorno (pantalla limpia)</li>
+                            <li>Grabación de pantalla (1080p mín.)</li>
+                            <li>Grabación de audio</li>
+                            <li>Revisión de calidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-week">SEMANA 2 - Clase D</div>
+                        <div class="timeline-title">Post-producción y Cierre</div>
+                        <div class="timeline-description">
+                            Edición inclusiva: zoom, placas de texto, música ambiental. Verificación del DoD. Entrega final en Campus Virtual.
+                        </div>
+                        <ul class="task-list">
+                            <li>Limpieza de audio</li>
+                            <li>Edición de video</li>
+                            <li>Elementos visuales (flechas, círculos, textos)</li>
+                            <li>Carátula y créditos</li>
+                            <li>Verificación de DoD</li>
+                            <li>Entrega final</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fases de Producción -->
+            <div class="phases">
+                <h2 style="color: #333; margin-bottom: 15px;">🎯 Las Tres Fases de Producción</h2>
+
+                <div class="phase-grid">
+                    <div class="phase-card">
+                        <div class="phase-number">1</div>
+                        <div class="phase-name">Pre-producción</div>
+                        <div class="phase-duration">4-6 horas</div>
+                        <div class="phase-tasks">
+                            <strong>Planificación</strong><br>
+                            • Investigación<br>
+                            • Guion técnico<br>
+                            • Aprobación docente
+                        </div>
+                    </div>
+
+                    <div class="phase-card">
+                        <div class="phase-number">2</div>
+                        <div class="phase-name">Producción</div>
+                        <div class="phase-duration">2-4 horas</div>
+                        <div class="phase-tasks">
+                            <strong>Grabación</strong><br>
+                            • Captura de pantalla<br>
+                            • Audio limpio<br>
+                            • Entorno profesional
+                        </div>
+                    </div>
+
+                    <div class="phase-card">
+                        <div class="phase-number">3</div>
+                        <div class="phase-name">Post-producción</div>
+                        <div class="phase-duration">3-5 horas</div>
+                        <div class="phase-tasks">
+                            <strong>Edición</strong><br>
+                            • Limpieza de audio<br>
+                            • Elementos visuales<br>
+                            • Créditos y revisión
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hitos Clave -->
+            <div class="milestones">
+                <h3>⭐ Hitos Clave (Puntos de Control)</h3>
+                <div class="milestone-item">
+                    <div class="milestone-date">Fin de Clase B (Semana 1):</div>
+                    <div class="milestone-desc">Guion entregado en Campus Virtual y aprobado por el docente</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">Durante Clase C:</div>
+                    <div class="milestone-desc">Grabación completada. Verificación de resolución y audio</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">Fin de Clase D:</div>
+                    <div class="milestone-desc">Video editado, créditos añadidos, verificación final del DoD</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">Entrega Final:</div>
+                    <div class="milestone-desc">Archivo MP4 o enlace compartido en Campus Virtual</div>
+                </div>
+            </div>
+
+            <!-- Distribución de Grupos -->
+            <div class="distribution">
+                <h2 style="color: #333; margin-bottom: 15px;">👥 Asignación de Grupos y Temas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Software / Tema</th>
+                            <th>Foco Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="group-badge">G1</span></td>
+                            <td>Google Drive</td>
+                            <td>Gestión de directorios, permisos, documentos compartidos</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G2</span></td>
+                            <td>Canva Presentaciones</td>
+                            <td>Plantillas, elementos gráficos, animaciones</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G3</span></td>
+                            <td>Canva Video</td>
+                            <td>Edición en línea de tiempo, transiciones, exportación</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G4</span></td>
+                            <td>Google Vids</td>
+                            <td>Creación asistida por IA y narración</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G5</span></td>
+                            <td>Scratch</td>
+                            <td>Funcionalidades básicas para juego sencillo</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G6</span></td>
+                            <td>GIMP</td>
+                            <td>Edición de imágenes, capas, redimensionamiento</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G7</span></td>
+                            <td>Visual Studio Code</td>
+                            <td>Creación de sitio web básico, semántica</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G8</span></td>
+                            <td>Canva Flayer</td>
+                            <td>Diseño gráfico, composición, paletas accesibles</td>
+                        </tr>
+                        <tr>
+                            <td><span class="group-badge">G9</span></td>
+                            <td>Moodle - Campus</td>
+                            <td>Inicio sesión, perfil, entrega tareas, foros</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recursos -->
+            <div class="resources">
+                <h3>📚 Recursos y Documentos de Apoyo</h3>
+                <div class="resource-item">
+                    <strong>Guía Completa del Estudiante (DOCX):</strong> Documento Word profesional con toda la información necesaria
+                </div>
+                <div class="resource-item">
+                    <strong>Guía Completa (HTML):</strong> Versión digital para consulta en línea
+                </div>
+                <div class="resource-item">
+                    <strong>Checklist Interactivo:</strong> Herramienta de seguimiento con progreso automático
+                </div>
+                <div class="resource-item">
+                    <strong>Ejemplo de Guion:</strong> Plantilla con ejemplo completo de guion técnico-literario
+                </div>
+                <div class="resource-item">
+                    <strong>Rúbrica de Evaluación:</strong> Criterios de calificación (Disponible del docente)
+                </div>
+            </div>
+
+            <!-- Requisitos DoD -->
+            <div style="background: #fffde7; border-left: 4px solid #fbc02d; padding: 20px; border-radius: 4px; margin: 30px 0;">
+                <h3 style="color: #f57f17; margin-bottom: 15px;">✓ Definición de Terminado (DoD)</h3>
+                <p style="color: #666; margin-bottom: 15px;">Todo videotutorial debe cumplir estos requisitos para ser evaluado:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <strong style="color: #f57f17;">Validación</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Guion aprobado previo</span>
+                    </div>
+                    <div>
+                        <strong style="color: #f57f17;">Accesibilidad</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Zoom, audio claro, descripciones</span>
+                    </div>
+                    <div>
+                        <strong style="color: #f57f17;">Duración</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">2 a 4 minutos máximo</span>
+                    </div>
+                    <div>
+                        <strong style="color: #f57f17;">Estructura</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Carátula, reto final</span>
+                    </div>
+                    <div>
+                        <strong style="color: #f57f17;">Ética</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Créditos y atribuciones</span>
+                    </div>
+                    <div>
+                        <strong style="color: #f57f17;">Formato</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">MP4, 1080p mínimo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <strong>EET N.° 1 "General Francisco Ramírez"</strong> | Paraná, Entre Ríos<br>
+                Asignatura: Taller de Computación | Docente: Juan Ignacio Noguera<br>
+                Proyecto: "Aprender Enseñando: Creación de recursos técnicos colaborativos e inclusivos"<br>
+                <em style="opacity: 0.8;">Diseñamos para todos: el código inclusivo es mejor código.</em>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

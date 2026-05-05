@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist: Realización de Videotutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2E75B6;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #2E75B6;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .project-info {
+            background: #f0f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .project-info strong {
+            color: #2E75B6;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            background: #2E75B6;
+            color: white;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 1.3em;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-left: 4px solid #e0e0e0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #f0f4f8;
+            border-left-color: #2E75B6;
+        }
+
+        .checklist-item.completed {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            margin-top: 3px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .item-content {
+            flex-grow: 1;
+        }
+
+        .item-content label {
+            display: block;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .item-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+        }
+
+        input[type="checkbox"]:checked ~ .item-content label {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .notes {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .notes strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #856404;
+        }
+
+        .important {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .important strong {
+            color: #721c24;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .team-info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 1px solid #b3d9e8;
+        }
+
+        .team-info label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2E75B6;
+        }
+
+        .team-info input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        .progress {
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #2E75B6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #2E75B6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1a4d7a;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            input[type="checkbox"] {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .button-group {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .section h2 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✓ Checklist: Realización de Videotutorial</h1>
+            <p style="color: #666; font-size: 0.95em;">Proyecto: "Aprender Enseñando"</p>
+        </div>
+
+        <div class="project-info">
+            <strong>Institución:</strong> EET N.° 1 "General Francisco Ramírez" | Paraná, Entre Ríos<br>
+            <strong>Asignatura:</strong> Taller de Computación<br>
+            <strong>Docente:</strong> Juan Ignacio Noguera<br>
+            <strong>Fecha de Inicio:</strong> ______________ | <strong>Fecha de Entrega:</strong> ______________
+        </div>
+
+        <div class="team-info">
+            <label>Información del Equipo</label>
+            <p><strong>Integrantes:</strong></p>
+            <input type="text" placeholder="Nombre 1:">
+            <input type="text" placeholder="Nombre 2:">
+            <input type="text" placeholder="Nombre 3:">
+            <p><strong>Tema/Software asignado:</strong> <input type="text" placeholder="Ej: Canva Presentaciones" style="width: 60%;"></p>
+        </div>
+
+        <div class="progress">
+            <span id="progress-text">Progreso: 0% completado</span>
+            <div style="background: #ddd; height: 20px; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                <div id="progress-bar" style="background: #4caf50; height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+            </div>
+        </div>
+
+        <!-- FASE 1: PRE-PRODUCCIÓN -->
+        <div class="section">
+            <h2>FASE 1: PRE-PRODUCCIÓN</h2>
+            <p style="color: #666; margin-bottom: 15px;">✓ Un minuto de planificación ahorra diez de edición</p>
+
+            <div class="important">
+                <strong>⚠️ IMPORTANTE:</strong> El guion debe ser aprobado por el docente antes de grabar.
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check1">
+                <div class="item-content">
+                    <label for="check1">Definí el problema específico que resuelve el tutorial</label>
+                    <p>¿Qué exactamente voy a enseñar? (No "usar Canva", sino "crear un póster profesional en Canva")</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check2">
+                <div class="item-content">
+                    <label for="check2">Identifiqué mi audiencia objetivo</label>
+                    <p>¿Principiantes? ¿Usuarios intermedios? Esto define el nivel de detalle.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check3">
+                <div class="item-content">
+                    <label for="check3">Investigué el software a profundidad</label>
+                    <p>Probé diferentes caminos. Encontré el flujo de trabajo más eficiente.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check4">
+                <div class="item-content">
+                    <label for="check4">Escribí el guion técnico-literario completo</label>
+                    <p>Dos columnas: Visual (acciones) y Audio (diálogos). Es el documento más importante.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check5">
+                <div class="item-content">
+                    <label for="check5">Incluí indicaciones de zoom en el guion</label>
+                    <p>Dónde necesito ampliar la pantalla para que el usuario vea detalles pequeños.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check6">
+                <div class="item-content">
+                    <label for="check6">Planifiqué la duración (2-4 minutos máximo)</label>
+                    <p>¿Entra todo en un video? ¿O necesito dos partes?</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check7">
+                <div class="item-content">
+                    <label for="check7">Entregué el guion en el Campus Virtual para aprobación</label>
+                    <p>SIN APROBACIÓN NO GRABES. Espera la devolución del docente.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check8">
+                <div class="item-content">
+                    <label for="check8">El docente aprobó el guion</label>
+                    <p>Recibí feedback y realicé las correcciones necesarias.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 2: PRODUCCIÓN -->
+        <div class="section">
+            <h2>FASE 2: PRODUCCIÓN (GRABACIÓN)</h2>
+            <p style="color: #666; margin-bottom: 15px;">✓ Captura de pantalla y audio profesional</p>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check9">
+                <div class="item-content">
+                    <label for="check9">Limpié el escritorio</label>
+                    <p>Oculté iconos innecesarios. Desactivé notificaciones (Whatsapp, email, etc.).</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check10">
+                <div class="item-content">
+                    <label for="check10">Configuré la resolución mínima en 1080p (Full HD)</label>
+                    <p>Para que el texto sea legible en pantallas pequeñas.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check11">
+                <div class="item-content">
+                    <label for="check11">Probé la herramienta de grabación (OBS, Canva, etc.)</label>
+                    <p>Hice una grabación de prueba para verificar que funcione correctamente.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check12">
+                <div class="item-content">
+                    <label for="check12">Grabé en un espacio tranquilo (si uso voz propia)</label>
+                    <p>Con telas (cortinas, alfombras) para absorber el sonido y evitar eco.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check13">
+                <div class="item-content">
+                    <label for="check13">Posicioné el micrófono correctamente</label>
+                    <p>A 15-20 cm de la boca. Probé el nivel de volumen.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check14">
+                <div class="item-content">
+                    <label for="check14">Grabé con movimientos fluidos del cursor</label>
+                    <p>Sin movimientos erráticos. Un clic, espero, siguiente acción.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check15">
+                <div class="item-content">
+                    <label for="check15">Si me equivoqué, no paré la grabación</label>
+                    <p>Respiré, esperé 3 segundos y repetí la acción. Arreglo en edición.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check16">
+                <div class="item-content">
+                    <label for="check16">Grabé siguiendo el guion aprobado</label>
+                    <p>Cada visual coincide con cada audio.</p>
+                </div>
+            </div>
+
+            <div class="notes">
+                <strong>Consejo:</strong> Graba más material del necesario. Es mejor tener opciones en edición.
+            </div>
+        </div>
+
+        <!-- FASE 3: POST-PRODUCCIÓN -->
+        <div class="section">
+            <h2>FASE 3: POST-PRODUCCIÓN (EDICIÓN)</h2>
+            <p style="color: #666; margin-bottom: 15px;">✓ Pulido y finalización del video</p>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check17">
+                <div class="item-content">
+                    <label for="check17">Importé el material grabado al editor</label>
+                    <p>OBS, Canva, Adobe Premiere, CapCut, o el software asignado.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check18">
+                <div class="item-content">
+                    <label for="check18">Elimié silencios largos</label>
+                    <p>Si no hay acción ni voz, el usuario se aburre. Corté pausas innecesarias.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check19">
+                <div class="item-content">
+                    <label for="check19">Limpié sonidos molestos del audio</label>
+                    <p>Respiraciones pesadas, clics de ratón, teclazos, etc.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check20">
+                <div class="item-content">
+                    <label for="check20">Normalicé el volumen del audio</label>
+                    <p>Consistente en toda la grabación. No hay picos ni valles abruptos.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check21">
+                <div class="item-content">
+                    <label for="check21">Añadí carátula al inicio</label>
+                    <p>Título claro, software, duración. Fondo limpio, texto legible.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check22">
+                <div class="item-content">
+                    <label for="check22">Añadí flechas y círculos para resaltar elementos</label>
+                    <p>El usuario sabe exactamente dónde mirar. No abruma con demasiadas anotaciones.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check23">
+                <div class="item-content">
+                    <label for="check23">Incluí placas de texto con conceptos clave</label>
+                    <p>Refuerzan lo que dice el audio. Fuente legible, contraste suficiente.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check24">
+                <div class="item-content">
+                    <label for="check24">Añadí música de fondo libre de derechos</label>
+                    <p>Freepik, Pixabay, YouTube Audio Library. Volumen bajo para que se escuche la voz.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check25">
+                <div class="item-content">
+                    <label for="check25">Apliqué transiciones suaves (sin excesos)</label>
+                    <p>Conectan ideas, no distraen. Usé máximo 2-3 tipos diferentes.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check26">
+                <div class="item-content">
+                    <label for="check26">Incluí reto final de práctica</label>
+                    <p>"Ahora tú: intenta..." Activa el aprendizaje activo.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check27">
+                <div class="item-content">
+                    <label for="check27">Creé diapositiva de créditos finales</label>
+                    <p>Software, versión, música (artista + licencia), IA usada, nombres del equipo.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check28">
+                <div class="item-content">
+                    <label for="check28">Verifiqué accesibilidad</label>
+                    <p>Zoom en detalles. Audio claro. Descripciones de elementos visuales.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check29">
+                <div class="item-content">
+                    <label for="check29">Revisé duración total (2-4 minutos)</label>
+                    <p>¿Está dentro del rango? Si es muy largo, corté o dividí en dos videos.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check30">
+                <div class="item-content">
+                    <label for="check30">Exporté en formato MP4 (H.264) - 1080p mínimo</label>
+                    <p>Calidad alta pero tamaño manejable. Probé que se reproduce correctamente.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check31">
+                <div class="item-content">
+                    <label for="check31">Vi el video completo (una vez, sin interrupciones)</label>
+                    <p>Como si fuera el primer usuario. ¿Entiendo todo? ¿Me aburro en algún momento?</p>
+                </div>
+            </div>
+
+            <div class="notes">
+                <strong>Recomendación:</strong> Pídele a un compañero que vea el video y te dé feedback antes de entregarlo.
+            </div>
+        </div>
+
+        <!-- FASE 4: ENTREGA -->
+        <div class="section">
+            <h2>FASE 4: ENTREGA Y CIERRE</h2>
+            <p style="color: #666; margin-bottom: 15px;">✓ Paso final antes de la evaluación</p>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check32">
+                <div class="item-content">
+                    <label for="check32">Subí el archivo a Google Drive o enlace compartido</label>
+                    <p>O lo entregué por el medio indicado por el docente. NO YouTube listado público.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check33">
+                <div class="item-content">
+                    <label for="check33">Probé que el enlace funciona (sin mi cuenta logueada)</label>
+                    <p>Verifica que otros usuarios puedan verlo sin problemas.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check34">
+                <div class="item-content">
+                    <label for="check34">Entregué en el Campus Virtual o por el método indicado</label>
+                    <p>Respetando la fecha límite. Incluí enlace + descripción breve del contenido.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check35">
+                <div class="item-content">
+                    <label for="check35">Actualicé la carpeta de clase con el tema</label>
+                    <p>Documenté qué aprendí. Incluí guion final, notas de edición, referencias.</p>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <input type="checkbox" id="check36">
+                <div class="item-content">
+                    <label for="check36">Completé la autoevaluación (si la hay)</label>
+                    <p>Reflexioné sobre lo que salió bien y qué mejoraría próxima vez.</p>
+                </div>
+            </div>
+
+            <div class="important">
+                <strong>✓ LISTO PARA EVALUAR</strong><br>
+                Tu videotutorial cumple todos los requisitos de la Definición de Terminado (DoD).
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="downloadPDF()">📥 Descargar como PDF</button>
+            <button class="btn-secondary" onclick="printPage()">🖨️ Imprimir</button>
+        </div>
+
+        <div class="footer">
+            <p>
+                Guía de Checklist v1.0 | EET N.° 1 "General Francisco Ramírez"<br>
+                Asignatura: Taller de Computación | Docente: Juan Ignacio Noguera<br>
+                <em>Diseñamos para todos: el código inclusivo es mejor código.</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Actualizar progreso
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(c => c.checked).length;
+            const total = checkboxes.length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            document.getElementById('progress-text').textContent = `Progreso: ${percentage}% completado`;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            
+            // Guardar en localStorage
+            localStorage.setItem('checklist-progress', JSON.stringify(
+                Array.from(checkboxes).map(c => c.checked)
+            ));
+        }
+
+        // Agregar event listeners
+        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox, index) => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.parentElement.classList.add('completed');
+                } else {
+                    this.parentElement.classList.remove('completed');
+                }
+                updateProgress();
+            });
+        });
+
+        // Cargar progreso guardado
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('checklist-progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                document.querySelectorAll('input[type="checkbox"]').forEach((checkbox, index) => {
+                    if (progress[index]) {
+                        checkbox.checked = true;
+                        checkbox.parentElement.classList.add('completed');
+                    }
+                });
+            }
+            updateProgress();
+        });
+
+        // Funciones de exportación
+        function printPage() {
+            window.print();
+        }
+
+        function downloadPDF() {
+            alert('Para descargar como PDF:\n1. Abre el menú de impresora (Ctrl+P o Cmd+P)\n2. Selecciona "Guardar como PDF"\n3. Elige ubicación y descarga\n\nTus respuestas se guardan automáticamente en el navegador.');
+        }
+    </script>
+</body>
+</html>

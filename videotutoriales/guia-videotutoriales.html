@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guía completa para estudiantes sobre cómo crear videotutoriales de software con énfasis en accesibilidad e inclusión."
+    />
+    <title>
+      Guía del Estudiante: Realización de Videotutoriales de Software
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 40px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Encabezados */
+      h1 {
+        font-size: 2.2em;
+        color: #2e75b6;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #2e75b6;
+        padding-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        color: #2e75b6;
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+
+      h3 {
+        font-size: 1.4em;
+        color: #333;
+        margin-top: 25px;
+        margin-bottom: 10px;
+      }
+
+      /* Párrafos y listas */
+      p {
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
+      ul,
+      ol {
+        margin-left: 30px;
+        margin-bottom: 15px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        line-height: 1.8;
+      }
+
+      strong {
+        color: #2e75b6;
+        font-weight: bold;
+      }
+
+      em {
+        font-style: italic;
+        color: #666;
+      }
+
+      /* Tablas */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.95em;
+      }
+
+      th {
+        background-color: #2e75b6;
+        color: white;
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ccc;
+        font-weight: bold;
+      }
+
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      /* Secciones destacadas */
+      .warning {
+        background-color: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+
+      .important {
+        background-color: #f8d7da;
+        border-left: 5px solid #dc3545;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+
+      .tip {
+        background-color: #d1ecf1;
+        border-left: 5px solid #17a2b8;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+
+      /* Navegación */
+      .toc {
+        background-color: #f0f4f8;
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+
+      .toc h2 {
+        margin-top: 0;
+      }
+
+      .toc ol {
+        margin-left: 40px;
+      }
+
+      .toc li {
+        margin-bottom: 8px;
+      }
+
+      /* Referencias APA */
+      .references {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #2e75b6;
+      }
+
+      .reference-item {
+        margin-left: 40px;
+        text-indent: -40px;
+        margin-bottom: 15px;
+        font-size: 0.95em;
+      }
+
+      /* Pie de página */
+      footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      /* Accesibilidad */
+      a {
+        color: #2e75b6;
+        text-decoration: underline;
+      }
+
+      a:hover {
+        color: #1a4d7a;
+        text-decoration: underline;
+      }
+
+      /* Saltar a contenido principal */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #2e75b6;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* Impresión */
+      @media print {
+        body {
+          background-color: white;
+          padding: 0;
+        }
+        .container {
+          box-shadow: none;
+          padding: 0;
+        }
+        h1,
+        h2 {
+          page-break-after: avoid;
+        }
+        table {
+          page-break-inside: avoid;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 1.8em;
+        }
+        h2 {
+          font-size: 1.4em;
+        }
+        h3 {
+          font-size: 1.2em;
+        }
+        table {
+          font-size: 0.85em;
+        }
+        th,
+        td {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <div class="container">
+      <header>
+        <h1>Guía del Estudiante: Realización de Videotutoriales de Software</h1>
+        <p style="font-size: 1.1em; color: #666; margin-bottom: 20px">
+          <strong>Proyecto:</strong> "Aprender Enseñando: Creación de recursos
+          técnicos colaborativos e inclusivos"
+        </p>
+        <p style="color: #999">
+          <strong>Institución:</strong> EET N.° 1 "General Francisco Ramírez" |
+          Paraná, Entre Ríos<br />
+          <strong>Asignatura:</strong> Taller de Computación<br />
+          <strong>Docentes:</strong> Juan Ignacio Noguera, Virginia Almirón<br />
+        </p>
+      </header>
+
+      <main id="main-content">
+        <section>
+          <h2>Índice de Contenidos</h2>
+          <div class="toc">
+            <ol>
+              <li><a href="#intro">Introducción y Contexto</a></li>
+              <li>
+                <a href="#fases">Fases de Producción de un Videotutorial</a>
+              </li>
+              <li>
+                <a href="#preproduccion"
+                  >Pre-producción: Planificación (La Fase Crítica)</a
+                >
+              </li>
+              <li>
+                <a href="#produccion"
+                  >Producción: Captura de Pantalla Profesional</a
+                >
+              </li>
+              <li>
+                <a href="#postproduccion">Post-producción: Edición y Pulido</a>
+              </li>
+              <li>
+                <a href="#accesibilidad">Accesibilidad Universal e Inclusión</a>
+              </li>
+              <li>
+                <a href="#etica">Ética, Créditos y Responsabilidad Digital</a>
+              </li>
+              <li><a href="#dod">Definición de Terminado (DoD)</a></li>
+              <li><a href="#referencias">Referencias Bibliográficas</a></li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="intro">
+          <h2>1. Introducción y Contexto</h2>
+          <p>
+            En este proyecto, se convierten en
+            <strong>creadores de contenido educativo</strong>. El objetivo es
+            producir videotutoriales cortos y efectivos que apliquen lógica de
+            programación y estándares de inclusión para que el conocimiento sea
+            accesible para todos.
+          </p>
+          <p>
+            Un <strong>videotutorial</strong> es un recurso audiovisual que
+            explica paso a paso cómo realizar una tarea o usar un software. No
+            es una grabación casual de pantalla: es un
+            <em>producto comunicacional</em> que requiere planificación,
+            estructura y atención al usuario final.
+          </p>
+
+          <h3>¿Por Qué Esto Importa?</h3>
+          <ul>
+            <li>
+              <strong>Aprender a comunicar:</strong> Comunican ideas complejas
+              de forma clara y visual. Este es un superpoder en cualquier
+              profesión técnica.
+            </li>
+            <li>
+              <strong>Pensamiento Computacional:</strong> Descomponen problemas
+              grandes en pasos pequeños, abstraen lo importante e identifican
+              patrones.
+            </li>
+            <li>
+              <strong>Responsabilidad Social:</strong> Comprenden que la
+              tecnología debe ser inclusiva. Diseñar para todos mejora el
+              producto para todos.
+            </li>
+          </ul>
+        </section>
+
+        <section id="fases">
+          <h2>2. Fases de Producción de un Videotutorial</h2>
+          <p>
+            Todo videotutorial profesional sigue tres fases distintas. Cada una
+            tiene sus objetivos y herramientas:
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Fase</th>
+                <th>Objetivo</th>
+                <th>Duración Aproximada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Pre-producción</strong></td>
+                <td>Planificar, investigar y escribir el guion</td>
+                <td>4-6 horas</td>
+              </tr>
+              <tr>
+                <td><strong>Producción</strong></td>
+                <td>Grabar pantalla y audio</td>
+                <td>2-4 horas</td>
+              </tr>
+              <tr>
+                <td><strong>Post-producción</strong></td>
+                <td>Editar, añadir música, revisar</td>
+                <td>3-5 horas</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="preproduccion">
+          <h2>3. Pre-producción: Planificación (La Fase Crítica)</h2>
+          <p>
+            <strong>Un minuto de planificación ahorra diez de edición.</strong>
+            La pre-producción no es "perder el tiempo", es ganarlo.
+          </p>
+
+          <h3>3.1 Definición del Proyecto</h3>
+          <p>
+            Antes de escribir o grabar, responde estas preguntas de forma clara
+            y concisa:
+          </p>
+          <ul>
+            <li>
+              <strong>¿Qué problema específico resuelve este tutorial?</strong>
+              Sé exacto. No es "usar Photoshop"; es "cómo usar capas en
+              Photoshop para organizar elementos gráficos".
+            </li>
+            <li>
+              <strong>¿Quién es mi usuario?</strong> ¿Principiante total?
+              ¿Usuario intermedio? Esto define el nivel de detalle y
+              vocabulario.
+            </li>
+            <li>
+              <strong>¿Cuál es el resultado final?</strong> ¿Qué deberá saber o
+              hacer tu audiencia al terminar el video?
+            </li>
+          </ul>
+
+          <h3>3.2 Investigación del Software</h3>
+          <p>
+            Explora la herramienta asignada a profundidad. Prueba diferentes
+            caminos. Identifica:
+          </p>
+          <ul>
+            <li>
+              El <strong>flujo de trabajo más eficiente</strong>. ¿Hay un atajo?
+              No grabes el camino largo si existe uno más corto.
+            </li>
+            <li>
+              Las <strong>limitaciones</strong> y casos donde el software no es
+              la solución. Ser honesto aumenta tu credibilidad.
+            </li>
+            <li>
+              <strong>Terminología correcta.</strong> Usa nombres exactos de
+              menús, botones y funciones (en idioma original si es necesario).
+            </li>
+          </ul>
+
+          <h3>3.3 El Guion Técnico-Literario (Obligatorio)</h3>
+          <p>
+            Este es el documento más importante. Divide tu pantalla en lo que se
+            ve y lo que se escucha. Tiene dos columnas:
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Columna Visual (Acciones en Pantalla)</th>
+                <th>Columna Audio (Voz / Música)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Detalla exactamente lo que aparecerá en pantalla. Ej: "Se abre
+                  el menú Archivo en la barra superior. El cursor señala 'Nuevo
+                  proyecto'."
+                </td>
+                <td>
+                  Escribe el diálogo exacto. Ej: "Hacemos clic en Archivo. Aquí
+                  puedes crear un nuevo proyecto o abrir uno existente."
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Indicaciones de zoom. Ej: "ZOOM 150% en el Panel de Capas
+                  (esquina inferior derecha)."
+                </td>
+                <td>
+                  Notas sobre ritmo. Ej: "Pausa 2 segundos. La música baja
+                  ligeramente aquí."
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Ejemplo Completo de Guion:</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Visual</th>
+                <th>Audio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Carátula: "Crear capas en Photoshop" sobre fondo gris.</td>
+                <td>
+                  Música sube suavemente. "Hola, soy [nombre] y te enseñaré a
+                  crear y organizar capas en Photoshop."
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Pantalla de Photoshop. Cursor señala el Panel de Capas
+                  (derecha). ZOOM 150% en ese panel.
+                </td>
+                <td>
+                  "Mira aquí, en la esquina inferior derecha. Ves el Panel de
+                  Capas. Es donde organizaremos nuestros elementos."
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Cursor hace clic en icono de 'Nueva Capa'. Aparece nueva capa
+                  en el panel.
+                </td>
+                <td>
+                  "Hacemos clic aquí para crear una nueva capa. Fácil, ¿verdad?"
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="important">
+            <strong>⚠️ Requisito obligatorio:</strong> El docente debe aprobar
+            este guion en el Campus Virtual antes de que empieces a grabar. No
+            hagas video sin aprobación.
+          </div>
+        </section>
+
+        <section id="produccion">
+          <h2>4. Producción: Captura de Pantalla Profesional</h2>
+
+          <h3>4.1 Preparación del Entorno</h3>
+          <ul>
+            <li>
+              <strong>Pantalla limpia:</strong> Oculta iconos innecesarios del
+              escritorio. Desactiva notificaciones de Whatsapp, email, etc. El
+              usuario debe ver solo lo que importa.
+            </li>
+            <li>
+              <strong>Resolución adecuada:</strong> Graba en al menos 1080p
+              (Full HD) para que el texto sea legible cuando se vea en pantallas
+              pequeñas.
+            </li>
+            <li>
+              <strong>Zooms predefinidos:</strong> Si el software usa fuentes
+              pequeñas, planifica dónde necesitarás zoom. No hagas zoom de forma
+              aleatoria.
+            </li>
+          </ul>
+
+          <h3>4.2 Ritmo y Ejecución</h3>
+          <ul>
+            <li>
+              <strong>Movimientos fluidos:</strong> Mueve el cursor de forma
+              suave. No hagas movimientos erráticos ni dejes el cursor estático
+              cuando no se necesita.
+            </li>
+            <li>
+              <strong>Velocidad controlada:</strong> Haz clic, espera un
+              segundo, luego haz la siguiente acción. Deja que tu voz
+              explicativa guíe el ritmo.
+            </li>
+            <li>
+              <strong>Si te equivocas:</strong> No pares la grabación. Respira
+              profundo, espera 3 segundos, y repite la acción. Esto facilita el
+              corte en edición.
+            </li>
+          </ul>
+
+          <h3>4.3 Audio Limpio</h3>
+          <p><strong>Si grabes tu voz en persona:</strong></p>
+          <ul>
+            <li>
+              Usa un espacio con telas (cortinas, alfombras) para absorber el
+              sonido y reducir el eco.
+            </li>
+            <li>Coloca el micrófono a 15-20 cm de tu boca.</li>
+            <li>Prueba el nivel de volumen antes de grabar.</li>
+          </ul>
+          <p><strong>Si usas IA para la voz (Google Vids, etc.):</strong></p>
+          <ul>
+            <li>
+              Verifica que el ritmo sea pausado. El usuario necesita tiempo para
+              asimilar lo que se ve en pantalla.
+            </li>
+            <li>
+              Prueba el resultado final con otros compañeros. ¿Se entiende bien?
+              ¿Es monótono?
+            </li>
+          </ul>
+        </section>
+
+        <section id="postproduccion">
+          <h2>5. Post-producción: Edición y Pulido</h2>
+
+          <h3>5.1 Limpieza de Audio</h3>
+          <ul>
+            <li>
+              Elimina los <strong>silencios largos.</strong> Si no hay acción ni
+              voz, el usuario se aburre.
+            </li>
+            <li>
+              Remueve <strong>sonidos molestos:</strong> respiraciones pesadas,
+              clics de ratón, teclazos, etc.
+            </li>
+            <li>
+              Normaliza el <strong>volumen</strong> para que sea consistente.
+            </li>
+          </ul>
+
+          <h3>5.2 Mezcla Ética de Audio</h3>
+          <ul>
+            <li>
+              La música de fondo debe ser
+              <strong>libre de derechos (Royalty Free).</strong> Plataformas
+              como Freepik, Pixabay o YouTube Audio Library ofrecen opciones.
+            </li>
+            <li>
+              El volumen de la música debe ser lo suficientemente
+              <strong>bajo para que la voz se entienda sin esfuerzo.</strong>
+            </li>
+            <li>
+              La música <strong>entra suave</strong> al inicio y
+              <strong>disminuye cuando hablas.</strong> Al final, vuelve a
+              subir.
+            </li>
+          </ul>
+
+          <h3>5.3 Elementos Visuales</h3>
+          <ul>
+            <li>
+              <strong>Carátula al inicio:</strong> Título claro, nombre del
+              software, duración.
+            </li>
+            <li>
+              <strong>Flechas y círculos</strong> para resaltar elementos clave.
+              Que el usuario sepa exactamente dónde mirar.
+            </li>
+            <li>
+              <strong>Placas de texto</strong> para reforzar conceptos
+              importantes mencionados en el audio.
+            </li>
+            <li>
+              <strong>Transiciones suaves.</strong> No las uses de forma
+              excesiva; son para conectar ideas, no para distraer.
+            </li>
+            <li>
+              <strong>Reto final de práctica:</strong> Al terminar, propón un
+              desafío: "Ahora tú: intenta..." Esto activa el aprendizaje activo.
+            </li>
+          </ul>
+        </section>
+
+        <section id="accesibilidad">
+          <h2>6. Accesibilidad Universal e Inclusión</h2>
+          <p>
+            El
+            <strong
+              >diseño accesible no es un capricho: es una
+              responsabilidad.</strong
+            >
+            Un videotutorial accesible es mejor para todos, no solo para
+            personas con discapacidades.
+          </p>
+
+          <h3>6.1 Principios de Accesibilidad</h3>
+          <ul>
+            <li>
+              <strong>Perceptible:</strong> El contenido debe ser fácil de ver y
+              escuchar.
+            </li>
+            <li>
+              <strong>Operable:</strong> Los controles deben ser claros. El
+              usuario debe entender qué hacer en cada paso.
+            </li>
+            <li>
+              <strong>Comprensible:</strong> Lenguaje claro, sin jerga
+              innecesaria.
+            </li>
+            <li>
+              <strong>Robusto:</strong> Compatible con diferentes dispositivos y
+              formas de consumo (escritorio, móvil, con lectores de pantalla).
+            </li>
+          </ul>
+
+          <h3>6.2 Prácticas Específicas</h3>
+          <ul>
+            <li>
+              <strong>Audio-descripción:</strong> Describe verbalmente dónde
+              están los botones. Ejemplo: "en la esquina superior derecha" o "al
+              lado del icono de engranaje".
+            </li>
+            <li>
+              <strong>Zoom estratégico:</strong> Es obligatorio ampliar la
+              pantalla cuando muestres menús con letra pequeña o detalles finos.
+            </li>
+            <li>
+              <strong>Contraste de colores:</strong> El texto sobre los
+              elementos de interfaz debe tener suficiente contraste. Si usas
+              leyendas, asegúrate de que sean legibles.
+            </li>
+            <li>
+              <strong>Lenguaje claro:</strong> Evita modismos innecesarios.
+              Explica los términos técnicos la primera vez que aparecen.
+            </li>
+            <li>
+              <strong>Subtítulos y transcripción:</strong> No siempre el usuario
+              puede escuchar. Los subtítulos ayudan a personas sordas, a quienes
+              ven en ambientes ruidosos, y a hablantes de otras lenguas.
+            </li>
+          </ul>
+
+          <div class="tip">
+            <strong>💡 Consejo:</strong> Prueba tu video con una persona que no
+            haya visto el software nunca. Si ella entiende, entonces es
+            accesible.
+          </div>
+        </section>
+
+        <section id="etica">
+          <h2>7. Ética, Créditos y Responsabilidad Digital</h2>
+
+          <h3>7.1 Respeto a la Propiedad Intelectual</h3>
+          <p><strong>Siempre cita las fuentes.</strong> Si usas:</p>
+          <ul>
+            <li>
+              <strong>Música:</strong> Incluye el nombre del artista y la
+              licencia. Si es del YouTube Audio Library, documéntalo.
+            </li>
+            <li>
+              <strong>Imágenes:</strong> Atribuye al autor si la licencia lo
+              requiere.
+            </li>
+            <li>
+              <strong>Herramientas de IA:</strong> Menciona qué se generó con
+              IA. Transparencia genera confianza.
+            </li>
+          </ul>
+
+          <h3>7.2 Diapositiva Final de Créditos</h3>
+          <p>
+            Todo video debe terminar con una diapositiva de créditos que
+            incluya:
+          </p>
+          <ul>
+            <li>Nombre y versión del software utilizado.</li>
+            <li>
+              Fuente de la música con autor y licencia (ej: "Sunny Morning por
+              Benjamin Tissot | Licencia CC BY 4.0").
+            </li>
+            <li>
+              Herramientas de IA utilizadas (ej: "Narración generada con Google
+              Vids").
+            </li>
+            <li>Nombres de los integrantes del equipo.</li>
+          </ul>
+
+          <h3>7.3 Lenguaje Inclusivo</h3>
+          <p>Usa un lenguaje que no excluya. Ejemplos:</p>
+          <ul>
+            <li>"Usuarios" en lugar de "usuarios varones".</li>
+            <li>
+              "Personas con discapacidad visual" en lugar de "ciegos" (a menos
+              que sea autodesignación).
+            </li>
+            <li>
+              Evita estereotipos. Si muestras ejemplos, incluye diversidad.
+            </li>
+          </ul>
+        </section>
+
+        <section id="dod">
+          <h2>8. Definición de Terminado (DoD)</h2>
+          <p>
+            <strong
+              >Tu videotutorial está completo cuando cumple TODOS estos
+              requisitos:</strong
+            >
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Criterio</th>
+                <th>Requisito</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Validación</strong></td>
+                <td>
+                  Guion aprobado previamente por el docente en el Campus
+                  Virtual. Sin aprobación previa: no se evalúa.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Accesibilidad</strong></td>
+                <td>
+                  Zoom en detalles pequeños. Audio claro. Lenguaje inclusivo.
+                  Audio-descripción de elementos importantes.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Duración</strong></td>
+                <td>
+                  Entre 2 y 4 minutos como máximo. Si hay más tema, divide en
+                  dos videos.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Estructura</strong></td>
+                <td>
+                  Carátula inicial clara. Contenido estructurado. Reto final de
+                  práctica para el usuario.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Ética</strong></td>
+                <td>
+                  Créditos al final: Software, versión, fuente de música con
+                  licencia, herramientas de IA usadas, nombres del equipo.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Condición Previa</strong></td>
+                <td>
+                  Carpeta de clase al día con el tema del video. Asistencia
+                  regular a clases de edición y post-producción.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Formato</strong></td>
+                <td>
+                  Archivo MP4 (H.264) o enlace compartido (Google Drive, YouTube
+                  no listado). Resolución mínima: 1080p.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="referencias">
+          <h2>9. Referencias Bibliográficas</h2>
+          <div class="references">
+            <div class="reference-item">
+              American Psychological Association. (2020).
+              <em
+                >Publication manual of the American Psychological
+                Association</em
+              >
+              (7.ª ed.). Recuperado de https://apastyle.apa.org/
+            </div>
+            <div class="reference-item">
+              Ballesta Ruiz, J. A., &amp; González Mayordomo, J. V. (2006).
+              Nuevas tecnologías, comunicación y educación: Hacia una sociedad
+              de la información y del conocimiento.
+              <em>Pixel-Bit: Revista de Medios y Educación, 27</em>, 39-51.
+            </div>
+            <div class="reference-item">
+              Cabero Almenara, J. (2010). Los retos de la integración de las TIC
+              en los procesos educativos: Límites y posibilidades.
+              <em>Perspectiva Educacional, 49</em>(1), 32-61.
+            </div>
+            <div class="reference-item">
+              García García, M. J. (2017). Producción audiovisual didáctica. En
+              J. Cabero Almenara &amp; B. Martínez Gimeno (Eds.),
+              <em>Tecnologías educativas y aprendizaje ubicuo</em> (pp. 89-104).
+              Editorial Síntesis.
+            </div>
+            <div class="reference-item">
+              Mozilla. (2023). <em>Web Accessibility (Web A11y)</em>. Recuperado
+              de https://www.mozilla.org/en-US/accessibility/
+            </div>
+            <div class="reference-item">
+              Noguera, J. I. (2024).
+              <em>Pensamiento computacional en educación técnica secundaria</em
+              >. EET N.° 1 "General Francisco Ramírez", Paraná.
+            </div>
+            <div class="reference-item">
+              Web Accessibility Initiative (WAI). (2023).
+              <em>Web Content Accessibility Guidelines (WCAG) 2.1</em>.
+              Recuperado de https://www.w3.org/WAI/WCAG21/quickref/
+            </div>
+          </div>
+
+          <p
+            style="
+              margin-top: 30px;
+              padding-top: 20px;
+              border-top: 1px solid #ddd;
+              font-size: 0.9em;
+              color: #666;
+            "
+          >
+            <strong>Nota:</strong> Esta guía ha sido elaborada considerando
+            estándares de accesibilidad WCAG 2.1 Nivel AA para asegurar que sea
+            comprensible para todos los estudiantes. Este documento es de acceso
+            público y puede ser distribuido libremente con fines educativos.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          &copy; 2024 EET N.° 1 "General Francisco Ramírez" | Paraná, Entre Ríos
+          | Asignatura: Taller de Computación<br />
+          Docentes: Juan Ignacio Noguera, Virginia Almirón<br />
+          <em>Diseñamos para todos: el código inclusivo es mejor código.</em>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
